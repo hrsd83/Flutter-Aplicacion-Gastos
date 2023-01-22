@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Transaction {
   final String id;
   final String title;
-  final int amount;
+  final double amount;
   final DateTime date;
 
   //constructor de la transaccion
