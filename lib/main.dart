@@ -23,6 +23,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter App'),
+        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
       ),
       //Se utiliza el SingleChieldScrollView para el renderizado
       body: SingleChildScrollView(
@@ -40,6 +41,11 @@ class MyHomePage extends StatelessWidget {
             const UserTransaction()
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
