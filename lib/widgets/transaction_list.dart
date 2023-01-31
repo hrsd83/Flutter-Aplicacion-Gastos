@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
 
-  const TransactionList(this.transactions, {required IconButton child});
+  const TransactionList(this.transactions);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,12 @@ class TransactionList extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Colors.grey.shade800, width: 1.5)),
-                  padding: EdgeInsets.all(10),
+                      border: Border.all(
+                          color: Theme.of(context).primaryColor, width: 1.5)),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
                     //Interpolacion del monto
                     '\$${transactions[index].amount.toStringAsFixed(2)} ',
@@ -48,8 +49,8 @@ class TransactionList extends StatelessWidget {
                     Text(
                       //Fecha
                       DateFormat('dd/MM/yyyy').format(transactions[index].date),
-                      style:
-                          TextStyle(color: Colors.grey.shade400, fontSize: 15),
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor, fontSize: 15),
                     )
                   ],
                 )

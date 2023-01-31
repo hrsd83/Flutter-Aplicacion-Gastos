@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_expense_application/widgets/new_transaction.dart';
-import 'package:animations/animations.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:animations/animations.dart';
+import 'package:flutter/material.dart';
 
-import 'models/transaction.dart';
+import './widgets/new_transaction.dart';
+
+import './widgets/transaction_list.dart';
+import './models/transaction.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.teal),
         debugShowCheckedModeBanner: false,
         title: 'Material App',
         home: MyHomePage());
@@ -55,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _starNewTransaction(BuildContext ctx) {
+  void _startNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
@@ -74,11 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Flutter App'),
         actions: <Widget>[
-          FadeInDownBig(
-            child: IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => _starNewTransaction(context),
-            ),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => _startNewTransaction(context),
           )
         ],
       ),
@@ -95,13 +96,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('Text!!'),
               ),
             ),
+            TransactionList(_userTransactions),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _starNewTransaction(context),
+        child: const Icon(Icons.add),
+        onPressed: () => _startNewTransaction(context),
       ),
     );
   }
